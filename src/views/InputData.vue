@@ -3,10 +3,10 @@
     <tile v-if="isLoading" v-bind:loading="isLoading"></tile>
     <FormData v-bind:profesori="profesori" v-on:submitData="submit" />
     <div>
-      <b-modal v-model="modalShow" ref="my-modal" hide-footer title="Using Component Methods">
+      <b-modal v-model="modalShow" ref="my-modal" hide-footer title="Poruka">
         <div class="d-block text-center">
-          <h3>Uspijesno ste dodali dokument u dosier profesora!</h3>
-          <b-button @click="hideModal">Ok</b-button>
+          <h3>Uspiješno ste dodali dokument u profesorov dosier!</h3>
+          <b-button @click="hideModal">Ok,povratak na početak</b-button>
         </div>
       </b-modal>
     </div>
@@ -29,14 +29,13 @@ export default {
       file_extension_mime: this.$route.query.extension,
       profesori: [],
       modalShow: false,
-      isLoading:false
+      isLoading: false
     };
   },
   created() {
     axios
       .get("/professor/list")
       .then(res => {
-        //this.profesori=res.data
         res.data.forEach(element => {
           var profesorData = {
             value: element.id,
@@ -45,11 +44,11 @@ export default {
           this.profesori.push(profesorData);
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err.message));
   },
   methods: {
     submit(form_data) {
-      this.isLoading=true;
+      this.isLoading = true;
       const extension = this.file_name.split(".");
       let last = extension.length - 1;
       let data = {
@@ -62,18 +61,17 @@ export default {
       axios
         .post(`/document/file/${this.id}`, data)
         .then(res => {
-          console.log(res);
-          if(res.status==200){
-            this.modalShow=true;
-            this.isLoading=false;
+          if (res.status == 200) {
+            this.modalShow = true;
+            this.isLoading = false;
           }
         })
         .catch(function() {
           console.log("FAILURE!!");
         });
     },
-    hideModal(){
-      this.$router.push('/');
+    hideModal() {
+      this.$router.push("/");
     }
   }
 };

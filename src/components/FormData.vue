@@ -8,23 +8,14 @@
       </div>
       <div class="form-group">
         <label for="exampleFormControlInput2">Kolegij</label>
-        <input
-          type="text"
-          v-model="form.kolegij"
-          class="form-control"
-          id="exampleFormControlInput2"
-          placeholder="Kolegij npr..Elektroničko poslovanje"
-          required
-        />
+        <input type="text" v-model="form.kolegij" class="form-control" id="exampleFormControlInput2" placeholder="Kolegij npr..Elektroničko poslovanje" required/>
       </div>
       <div class="form-group">
         <label for="exampleFormControlSelect2">Profesor</label>
         <select v-model="form.profesor" class="form-control" id="exampleFormControlSelect2" required>
-          <option
-            v-bind:key="profesor.value"
-            v-bind:value="profesor.value"
-            v-for="profesor in profesori"
-          >{{profesor.text}}</option>
+          <option v-bind:key="profesor.value" v-bind:value="profesor.value" v-for="profesor in profesori">
+            {{profesor.text}}
+          </option>
         </select>
       </div>
       <input type="submit" value="Submit" class="btn" />

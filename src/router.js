@@ -15,9 +15,6 @@ export default new Router({
     {
       path: '/data/',
       name: 'form_data',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: InputData,
       props: (route) => ({ id: route.query.id }, { name: route.query.name }, { extension: route.query.extension })
     }
