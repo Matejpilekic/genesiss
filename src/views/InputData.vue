@@ -48,13 +48,14 @@ export default {
   },
   methods: {
     submit(form_data) {
+      console.log(form_data.professor_id);
       this.isLoading = true;
       const extension = this.file_name.split(".");
       let last = extension.length - 1;
       let data = {
         document_name: this.file_name,
         file_extension: extension[last],
-        professor_id: form_data.profesor,
+        professor_id: form_data.professor_id,
         category: form_data.category
       };
 

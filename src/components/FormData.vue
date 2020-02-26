@@ -46,11 +46,13 @@ export default {
     addData() {
       this.isLoading=true;
       const category = this.form.studij + "-" + this.form.kolegij;
+      console.log(this.form.profesor);
       
       let data = {
-        professor_id: this.profesor,
+        professor_id: this.form.profesor,
         category: category
       };
+    
       this.$emit('submitData',data);
     }
   }

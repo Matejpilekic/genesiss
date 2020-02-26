@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <header>
-      <div class="logo"></div>
+      <a href="/">
+        <div class="logo"></div>
+      </a>
     </header>
     <div class="image"></div>
 
